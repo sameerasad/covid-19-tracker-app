@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+ This is a basic workflow to help you get started with Actions
 
 name: CI
 
@@ -7,7 +7,6 @@ name: CI
 on:
   push:
     branches: [ master ]
-
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,21 +22,21 @@ jobs:
 
     - name: Setup Node.js environment
       uses: actions/setup-node@v2-beta
-      with:
-           version:12
-          
+      with: 
+        version: 12
+        
     - name: GitHub Action for Yarn
-      uses: Borales/actions-yarn@v2.3.0
-      with:  
+      uses: Borales/actions-yarn@v2.1.0
+      with:
         # Yarn command
-           cmd:install  
-           
-    - name: creating builb
-      uses: yarn build       
-         
-    - name: installing surge   
-      run: npm install surge
-      
+        cmd: install # npm install/ yarn install
+    
+    - name: Creating build
+      run: yarn build
+    
+    - name: installing surge  
+      run: npm install -g surge
+    
     - name: deploying on surge
-      run: surge ./build http://covid-wrist.surge.sh/ --token 8f306436da16bf3d420e265660aadd30
+      run: surge ./build http://covid-wrist.surge.sh/ --token ${{secrets.MY_TOKEN_SURGE}}
     
