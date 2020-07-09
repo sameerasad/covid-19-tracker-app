@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import header from './header';
+import description from './decription';
+
 import * as serviceWorker from './serviceWorker';
+import decription from './decription';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
     <header />
+  <decription />
   </React.StrictMode>,
   document.getElementById('root')
 );
